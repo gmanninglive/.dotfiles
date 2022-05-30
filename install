@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+set -o nounset    # error when referencing undefined variable
+set -o errexit    # exit when command fails
+
+pushd $DOTFILES
+for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+do
+    stow -D $folder
+    stow $folder
+done
+popd
+

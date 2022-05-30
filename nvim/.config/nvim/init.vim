@@ -74,6 +74,17 @@ set shiftwidth=4
 set expandtab
 set smartindent
 
+set nohlsearch
+set hidden
+set noerrorbells
+
+set incsearch
+set colorcolumn=120
+set cmdheight=2
+set termguicolors
+set signcolumn=yes
+
+let NERDTreeShowHidden=1
 " ====================================
 " Colors
 " configure: https://github.com/vim-airline/vim-airline#user-content-extensible-pipeline
@@ -83,10 +94,5 @@ colorscheme afterglow
 let g:airline_theme = "afterglow"
 
 " show buffers (if only one tab)
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
-" ====================================
-" Language Specific
-" ====================================
-
-"let g:go_debug = ['lsp']
