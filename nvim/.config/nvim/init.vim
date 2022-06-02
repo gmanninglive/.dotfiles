@@ -1,3 +1,6 @@
+set wildignore+=**/node_modules/*
+set wildignore+=**/.git/*
+
 " ==================================================
 " Plugins
 " ==================================================
@@ -5,40 +8,31 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Excellent git wrapper
+" Telesecope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Git wrapper
 " https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
-
-Plug 'preservim/nerdcommenter'
-
 "File system tree"
-Plug 'scrooloose/nerdtree'
-
-" nerdtree-git-plugin - show git status in NERD Tree
-" https://github.com/Xuyuanp/nerdtree-git-plugin
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" vim-airline
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'preservim/nerdcommenter'
 " Enhanced statusline
-" https://github.com/vim-airline/vim-airline
 Plug 'vim-airline/vim-airline'
-" https://github.com/vim-airline/vim-airline-themes
 Plug 'vim-airline/vim-airline-themes'
-" https://github.com/danilo-augusto/vim-afterglow
-Plug 'danilo-augusto/vim-afterglow' 
-
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Language support
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
-
+set termguicolors
 " ==================================================
 " Remaps
 " ==================================================
-"toggle nerdmap with spacebar"
-nnoremap <silent> <Space> :NERDTreeToggle<CR>
-
 " use ;; for escape
 " http://vim.wikia.com/wiki/Avoid_the_escape_key
 inoremap ;; <Esc>
@@ -61,6 +55,21 @@ let g:NERDCreateDefaultMappings = 0
 nnoremap <leader>c :call nerdcommenter#Comment(0, "toggle") <CR>
 vnoremap <leader>c :call nerdcommenter#Comment(0, "toggle") <CR> gv
 
+" Telescope fuzzy finder
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <leader>k :wincmd k<CR>
+nmap <silent> <leader>j :wincmd j<CR>
+nmap <silent> <leader>h :wincmd h<CR>
+nmap <silent> <leader>l :wincmd l<CR>
+
+nnoremap <leader>o :2winc l \| vsplit \| 2winc h \| norm o<CR>
+
+nnoremap ; :
+
 " ==================================================
 " Options
 " ==================================================
@@ -69,8 +78,8 @@ set scrolloff=8
 set number
 set relativenumber
 
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 
@@ -84,15 +93,22 @@ set cmdheight=2
 set termguicolors
 set signcolumn=yes
 
-let NERDTreeShowHidden=1
+" Nvim tree 
+nnoremap <space> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+
 " ====================================
 " Colors
 " configure: https://github.com/vim-airline/vim-airline#user-content-extensible-pipeline
 " ====================================
 
-colorscheme afterglow 
-let g:airline_theme = "afterglow"
-
-" show buffers (if only one tab)
+colorscheme dracula
+let g:airline_theme = "dracula"
+"hi Normal guibg=NONE ctermbg=NONE
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
+lua require("init")
