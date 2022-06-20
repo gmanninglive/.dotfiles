@@ -2,32 +2,8 @@
 unsetopt BEEP
 VIM="nvim"
 
-#RBENV
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-#YARN
-export PATH="$(yarn global bin):$PATH"
-
-#VSCODE
-export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
-
-#NVM
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-
-# GOLANG
-export GOPATH="$HOME/go"
-export PATH="$HOME/go/bin:$PATH"
-
-#GENIE
-export PATH="$HOME/go/src/github.com/gmanninglive/genie:$PATH"
-export GENIE_CONFIG='~/Coding/genieconfig/config.json'
-
-#PYENV
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+source $ZSH_CUSTOM/env.zsh
+source $ZSH_CUSTOM/paths.zsh
 
 #Aliases
 alias yardr='cd ~/work/yardlink-rails'
@@ -52,3 +28,4 @@ function yspace() {
     yabai -m space $@
   fi
 }
+
