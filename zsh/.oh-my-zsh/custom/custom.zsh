@@ -6,10 +6,10 @@ VIM="nvim"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 #YARN
-export PATH="$PATH:$(yarn global bin)"
+export PATH="$(yarn global bin):$PATH"
 
 #VSCODE
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 #NVM
 export NVM_DIR="$HOME/.nvm"
@@ -18,9 +18,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # GOLANG
 export GOPATH="$HOME/go"
+export PATH="$HOME/go/bin:$PATH"
 
 #GENIE
-export PATH="$PATH:$HOME/go/github.com/gmanninglive/genie/genie"
+export PATH="$HOME/go/src/github.com/gmanninglive/genie:$PATH"
 export GENIE_CONFIG='~/Coding/genieconfig/config.json'
 
 #PYENV
