@@ -1,0 +1,6 @@
+sudo apt update
+sudo apt install i3
+sudo snap install --classic code
+sudo apt install brightnessctl
+sudo apt install brightness-udev
+

@@ -5,7 +5,7 @@ VIM="nvim"
 source $ZSH_CUSTOM/env.zsh
 source $ZSH_CUSTOM/paths.zsh
 
-alias python=/usr/bin/python3
+# alias python=/usr/bin/python3
 
 #Aliases
 alias yardr='cd ~/work/yardlink-rails'

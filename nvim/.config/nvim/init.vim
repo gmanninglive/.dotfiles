@@ -52,8 +52,8 @@ function! CheckBackspace() abort
 endfunction
 
 let g:NERDCreateDefaultMappings = 0
-nnoremap <leader>c :call nerdcommenter#Comment(0, "toggle") <CR>
-vnoremap <leader>c :call nerdcommenter#Comment(0, "toggle") <CR> gv
+nnoremap <leader>/ :call nerdcommenter#Comment(0, "toggle") <CR>
+vnoremap <leader>/ :call nerdcommenter#Comment(0, "toggle") <CR> gv
 
 " Telescope fuzzy finder
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
