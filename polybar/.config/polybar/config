@@ -177,7 +177,7 @@ label = %date% %time%
 
 [module/battery]
 type = internal/battery
-battery = BAT1
+battery = BAT0
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>

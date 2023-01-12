@@ -1,5 +1,5 @@
 export DOTFILES="$HOME/.dotfiles"
-export STOW_FOLDERS="coc,i3,nvim,skhd,zsh"
+export STOW_FOLDERS="coc,i3,nvim,skhd,zsh,polybar"
 
 addToPath() {
     if [[ "$PATH" != *"$1"* ]]; then
